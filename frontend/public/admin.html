@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin - Cafés List</title>
+	<link rel="stylesheet" href="../src/styles/admin.css">
+</head>
+<body>
+<div class="container">
+	<h1>Admin - Manage Cafés</h1>
+	<button id="logout-button">Logout</button>
+	<div id="auth-section">
+		<h2>Login</h2>
+		<form id="login-form" class="form">
+			<label for="email">Email</label>
+			<input id="email" placeholder="Email" required>
+			<label for="password">Password</label>
+			<input id="password" type="password" placeholder="Password" required>
+			<button type="submit">Login</button>
+		</form>
+		<p id="auth-error" class="error"></p>
+	</div>
+	<h2>Add New Cafe</h2>
+	<form class="form" id="add-form">
+		<label for="title">Title</label>
+		<input id="title" placeholder="Title" required>
+		<label for="city">City</label>
+		<input id="city" placeholder="City" required>
+		<label for="description">Description</label>
+		<textarea id="description" placeholder="Description" required></textarea>
+		<label for="image_url">Image URL</label>
+		<input id="image_url" placeholder="Image URL">
+		<label for="best_for">Best for</label>
+		<select id="best_for" required>
+			<option value="" disabled selected>Select Best For</option>
+		</select>
+		<label for="also_good_for">Also good for</label>
+		<select id="also_good_for" multiple></select>
+		<button type="submit">Add Cafe</button>
+		<p id="add-error" class="error"></p>
+		<p id="add-success" class="success"></p>
+	</form>
+	<h2>Existing Cafes</h2>
+	<div id="loading">Loading...</div>
+	<div class="cafe-grid" id="cafe-grid"></div>
+	<!-- Edit Modal -->
+	<div id="edit-modal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<h2>Edit Cafe</h2>
+			<form id="edit-form" class="form">
+				<label for="edit_title">Title</label>
+				<input id="edit_title" placeholder="Title" required>
+				<label for="edit_city">City</label>
+				<input id="edit_city" placeholder="City" required>
+				<label for="edit_description">Description</label>
+				<textarea id="edit_description" placeholder="Description" required></textarea>
+				<label for="edit_image_url">Image URL</label>
+				<input id="edit_image_url" placeholder="Image URL">
+				<label for="edit_best_for">Best for</label>
+				<select id="edit_best_for" required>
+					<option value="" disabled selected>Select Best For</option>
+				</select>
+				<label for="edit_also_good_for">Also good for</label>
+				<select id="edit_also_good_for" multiple></select>
+				<button type="submit">Update Cafe</button>
+			</form>
+		</div>
+	</div>
+</div>
+<script src="../src/admin.js"></script>
+</body>
+</html>

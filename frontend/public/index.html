@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cafés List</title>
+	<link rel="stylesheet" href="../src/styles/index.css">
+</head>
+<body>
+<div class="search-bar">
+	<input id="city-filter" placeholder="Search by city (e.g., Kyiv)">
+	<button id="search-btn">Search Cafes</button>
+</div>
+<div class="container">
+	<div class="sidebar" id="sidebar">
+		<label for="best-for-filter">Best For (Primary Category)</label>
+		<select id="best-for-filter">
+			<option value="" selected>All Categories</option>
+		</select>
+		<label for="also-good-for-filter">Also Good For (select multiple)</label>
+		<select id="also-good-for-filter" multiple>
+			<option value="" disabled>Select Also Good For</option>
+		</select>
+		<div id="selected-chips" class="chips"></div>
+		<button id="reset-filters">Reset Filters</button>
+	</div>
+	<div class="main-content">
+		<h1>Cafés List</h1>
+		<div id="results-count" class="results-count"></div>
+		<div id="loading">Loading...</div>
+		<div class="cafe-grid" id="cafe-grid"></div>
+	</div>
+</div>
+<script src="../src/index.js"></script>
+</body>
+</html>

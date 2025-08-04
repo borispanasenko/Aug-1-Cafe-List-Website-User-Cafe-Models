@@ -1,0 +1,153 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff; /* White background like Tripadvisor */
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.form {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.form label {
+    font-weight: bold;
+    color: #333;
+}
+.form input, .form textarea, .form select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+.form button {
+    padding: 12px;
+    background-color: #00af87; /* Tripadvisor green */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.form button:hover {
+    background-color: #009f78;
+}
+.cafe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px; /* More white space */
+}
+.cafe-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Softer shadow */
+    padding: 15px;
+    transition: transform 0.2s; /* Hover animation like Tripadvisor */
+}
+.cafe-card:hover {
+    transform: scale(1.05);
+}
+.cafe-card button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.cafe-card button:hover {
+    background-color: #d32f2f;
+}
+.cafe-card button.edit {
+    background-color: #00af87;
+    margin-right: 10px;
+}
+.cafe-card button.edit:hover {
+    background-color: #009f78;
+}
+#auth-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+#logout-button {
+    background-color: #f44336;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: none;
+}
+#logout-button:hover {
+    background-color: #d32f2f;
+}
+.error {
+    color: red;
+    margin-top: 10px;
+}
+.success {
+    color: #00af87;
+    margin-top: 10px;
+}
+#loading {
+    text-align: center;
+    margin: 20px;
+    display: none;
+    color: #00af87;
+}
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Fade-in */
+}
+.modal.visible {
+    opacity: 1;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover, .close:focus {
+    color: #333;
+    text-decoration: none;
+}
+h1, h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+select[multiple] {
+    height: 120px;
+}
