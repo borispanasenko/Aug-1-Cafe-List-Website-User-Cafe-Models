@@ -1,8 +1,6 @@
 from typing import List, Type, TypeVar
 
-from app.app_data.categories_data import categories_data
-
-from app.app_data.cafes_data import cafes_data
+from app.app_data.data import cafes_data, categories_data
 from app.app_core.domain.schemas.cafe_schemas import CafeCreateSchema
 from app.app_core.domain.services.cafe_service import create_cafe
 
