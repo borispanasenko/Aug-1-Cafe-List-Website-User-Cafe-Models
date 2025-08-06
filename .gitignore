@@ -31,3 +31,4 @@ app/instance/
 # OS-specific
 .DS_Store
 Thumbs.db
+/dev/logs/
