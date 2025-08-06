@@ -17,8 +17,31 @@ async def create_cafe(db: AsyncSession, cafe_data: CafeCreateSchema) -> CafeResp
 
     cafe = CafeModel(title=cafe_data.title, city=cafe_data.city or "Unknown",
                      description=cafe_data.description)
-    cafe = await cafe_repository.add_cafe(db, cafe)
+    cafe: CafeModel = await cafe_repository.add_cafe(db, cafe)
     return CafeResponseSchema.from_orm(cafe)
+
+
+async def create_cafe_no_check(db: AsyncSession, cafe_data: CafeCreateSchema) -> CafeResponseSchema:
+    cafe = CafeModel(title=cafe_data.title, city=cafe_data.city or "Unknown",
+                     description=cafe_data.description)
+    cafe: CafeModel = await cafe_repository.add_cafe(db, cafe)
+    return CafeResponseSchema.from_orm(cafe)
+
+
+async def get_or_create_cafe(db: AsyncSession, cafe_data: CafeCreateSchema) -> CafeResponseSchema:
+    existing_cafe = await cafe_repository.get_cafe_by_title_and_city(db, cafe_data.title, cafe_data.city or 'Unknown')
+    if existing_cafe:
+        logger.info(f"Cafe '{cafe_data.title}' in '{cafe_data.city or 'Unknown'}' already exists - returning existing")
+        return CafeResponseSchema.from_orm(existing_cafe)
+
+    cafe = CafeModel(
+        title=cafe_data.title,
+        city=cafe_data.city or "Unknown",
+        description=cafe_data.description
+    )
+    new_cafe = await cafe_repository.add_cafe(db, cafe)
+    logger.info(f"Cafe '{new_cafe.title}' in '{new_cafe.city or 'Unknown'}' created successfully")
+    return CafeResponseSchema.from_orm(new_cafe)
 
 
 async def get_all_cafes(db: AsyncSession, skip: int = 0, limit: int = 30) -> List[CafeResponseSchema]:

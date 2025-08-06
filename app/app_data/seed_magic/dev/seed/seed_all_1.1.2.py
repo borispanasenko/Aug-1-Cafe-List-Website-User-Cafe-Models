@@ -108,8 +108,8 @@ SEEDERS = [
         name='cafes',
         data=cafes_data,
         schema=CafeCreateSchema,
-        create_func=cafe_service.get_or_create_cafe,
-        get_existing_func=cafe_service.get_cafe_by_tc,
+        create_func=cafe_service.create_cafe,
+        get_existing_func=cafe_service.get_existing_cafe,
         update_func=update_cafe_seed
     ),
     SeederConfig(
@@ -130,7 +130,6 @@ async def seed_all():
             except Exception as e:
                 logger.error("Seeder %s failed: %s", seeder.name, e)
                 # decide: break or continue
-                break
 
 if __name__ == "__main__":
     asyncio.run(seed_all())

@@ -13,11 +13,12 @@ async def add_cafe(db: AsyncSession, cafe: CafeModel) -> CafeModel:
         await db.refresh(cafe)
         return cafe
     except IntegrityError as e:
-        await db.rollback()
-        if 'unique constraint' in str(e.orig):
-            raise HTTPException(status_code=409, detail='Cafe with this name and location already exists')
-        else:
-            raise HTTPException(status_code=500, detail='Database integrity error')
+        # await db.rollback()
+        # if 'unique constraint' in str(e.orig):
+        #     raise HTTPException(status_code=409, detail='Cafe with this name and location already exists')
+        # else:
+        #     raise HTTPException(status_code=500, detail='Database integrity error')
+        ...
 
 
 async def get_all_cafes(db: AsyncSession, skip: int = 0, limit: int = 30) -> List[CafeModel]:

@@ -1,9 +1,6 @@
 from __future__ import annotations
-from typing import Optional
-from uuid import UUID
-from sqlalchemy import Boolean, Column, String
-from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy.ext.declarative import declarative_base
+
+from sqlalchemy import String
 from fastapi_users.db import SQLAlchemyBaseUserTableUUID
 from sqlalchemy.orm import Mapped, mapped_column
 from app.infrastructure.database import Base

@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 
 
+# Определим точные типы для читаемости
 CreateFunc = Callable[[AsyncSession, BaseModel], Awaitable[Optional[object]]]
 GetExistingFunc = Callable[[AsyncSession, BaseModel], Awaitable[Optional[object]]]
 UpdateFunc = Callable[[AsyncSession, object, BaseModel], Awaitable[bool]]
@@ -14,7 +15,7 @@ async def _default_get_existing(_: AsyncSession, __: BaseModel) -> Optional[obje
 
 
 async def _default_update(_: AsyncSession, __: object, ___: BaseModel) -> bool:
-    return False
+    return False  # ничего не обновлено
 
 
 @dataclass

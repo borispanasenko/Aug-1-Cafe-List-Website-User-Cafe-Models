@@ -17,13 +17,15 @@ async def add_category(db: AsyncSession, category: CategoryModel) -> Optional[Ca
         await db.refresh(category)
         return category
     except IntegrityError as e:
-        await db.rollback()
-        logger.warning(f"Integrity error adding category '{category.name}': {str(e)}")
-        return None
+        # await db.rollback()
+        # logger.warning(f"Integrity error adding category '{category.name}': {str(e)}")
+        # return None
+        ...
     except SQLAlchemyError as e:
-        await db.rollback()
-        logger.error(f'DB error adding category: {str(e)}')
-        raise HTTPException(status_code=500, detail='Database error') from e
+        # await db.rollback()
+        # logger.error(f'DB error adding category: {str(e)}')
+        # raise HTTPException(status_code=500, detail='Database error') from e
+        ...
 
 
 async def get_all_categories(db: AsyncSession) -> List[CategoryModel]:

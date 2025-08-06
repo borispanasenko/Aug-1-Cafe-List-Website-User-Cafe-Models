@@ -1,8 +1,8 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class CategoryCreateSchema(BaseModel):
-    name: str
+    name: str = Field(..., max_length=50)
 
 
 class CategoryResponseSchema(BaseModel):
@@ -11,3 +11,4 @@ class CategoryResponseSchema(BaseModel):
 
     class Config:
         from_attributes = True
+        
