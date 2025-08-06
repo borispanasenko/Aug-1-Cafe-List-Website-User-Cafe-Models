@@ -108,7 +108,7 @@ SEEDERS = [
         name='cafes',
         data=cafes_data,
         schema=CafeCreateSchema,
-        create_func=cafe_service.get_or_create_cafe,
+        create_func=cafe_service.create_cafe_no_check,
         get_existing_func=cafe_service.get_cafe_by_tc,
         update_func=update_cafe_seed
     ),

@@ -73,4 +73,5 @@ async def update_cafe(db: AsyncSession, cafe_id: int, cafe_data: CafeUpdateSchem
 
 
 async def get_cafe_by_tc(db: AsyncSession, cafe_data: CafeCreateSchema) -> CafeResponseSchema | None:
-    return await cafe_repository.get_cafe_by_title_and_city(db, cafe_data.title, cafe_data.city or 'Unknown')
+    cafe = await cafe_repository.get_cafe_by_title_and_city_in_load(db, cafe_data.title, cafe_data.city or 'Unknown')
+    return cafe
