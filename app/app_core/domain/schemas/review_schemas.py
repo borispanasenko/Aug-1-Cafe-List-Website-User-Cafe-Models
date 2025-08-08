@@ -3,12 +3,12 @@ from typing import Optional
 from datetime import datetime
 
 
-class ReviewCreate(BaseModel):
+class ReviewCreateSchema(BaseModel):
     rating: int = Field(..., ge=1, le=5)
     comment: Optional[str] = None
 
 
-class ReviewResponse(BaseModel):
+class ReviewResponseSchema(BaseModel):
     id: int
     rating: int
     comment: Optional[str]

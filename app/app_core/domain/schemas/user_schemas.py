@@ -1,11 +1,11 @@
 from pydantic import BaseModel, EmailStr, field_validator, Field
 from typing import List, Optional
 from uuid import UUID
-from .review_schemas import ReviewResponse
+from .review_schemas import ReviewResponseSchema
 from datetime import datetime  # noqa: F401
 
 
-class UserCreate(BaseModel):
+class UserCreateSchema(BaseModel):
     email: EmailStr
     password: str = Field(min_length=8)
     username: str
@@ -20,7 +20,7 @@ class UserCreate(BaseModel):
         return v
 
 
-class UserRead(BaseModel):
+class UserReadSchema(BaseModel):
     id: UUID
     email: EmailStr
     username: str
@@ -34,7 +34,7 @@ class UserRead(BaseModel):
         from_attributes = True
 
 
-class UserUpdate(BaseModel):
+class UserUpdateSchema(BaseModel):
     email: Optional[EmailStr] = None
     password: Optional[str] = Field(None, min_length=8)
     username: Optional[str] = None
@@ -52,12 +52,12 @@ class UserUpdate(BaseModel):
         return v
 
 
-class UserInDB(UserRead):
+class UserInDBSchema(UserReadSchema):
     hashed_password: str
 
 
-class UserWithReviewsResponse(UserRead):
-    reviews: List[ReviewResponse] = []
+class UserWithReviewsResponseSchema(UserReadSchema):
+    reviews: List[ReviewResponseSchema] = []
 
     class Config:
         from_attributes = True
