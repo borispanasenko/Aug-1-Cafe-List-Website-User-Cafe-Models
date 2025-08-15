@@ -17,14 +17,16 @@ router = APIRouter(prefix='/cafes', tags=['cafes'])
 
 # –––––––––––––––––– ROUTES –––––––––––––––––– #
 
-@router.post('/', response_model=CafeResponseSchema)
+@router.post('', response_model=CafeResponseSchema)
+@router.post('/', include_in_schema=False)
 async def create_new_cafe(cafe_data: CafeCreateSchema, db: AsyncSession = Depends(get_db),
                           _user: UserModel = Depends(current_superuser)):
     cafe: CafeModel = await cafe_service.create_cafe(db, cafe_data)
     return CafeResponseSchema.from_orm(cafe)
 
 
-@router.get('/', response_model=List[CafeResponseSchema])
+@router.get('', response_model=List[CafeResponseSchema])
+@router.get('/', include_in_schema=False)
 async def read_all_cafes(db: AsyncSession = Depends(get_db), skip: int = Query(0, ge=0)):
     limit: int = 30
     cafes: List[CafeModel] = await cafe_service.get_all_cafes(db, skip, limit)

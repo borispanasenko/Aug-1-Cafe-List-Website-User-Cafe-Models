@@ -16,7 +16,8 @@ router = APIRouter(prefix='/categories', tags=['categories'])
 
 # –––––––––––––––––– ROUTES –––––––––––––––––– #
 
-@router.get('/', response_model=List[CategoryResponseSchema])
+@router.get('', response_model=List[CategoryResponseSchema])
+@router.get('/', include_in_schema=False)
 async def get_categories(db: AsyncSession = Depends(get_db)):
     categories: List[CategoryModel] = await category_service.get_categories(db)
     return [CategoryResponseSchema.from_orm(cat) for cat in categories]
